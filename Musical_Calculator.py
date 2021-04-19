@@ -17,6 +17,10 @@ sound_library = { #This dictionary holds the numbers and what songs they play
     "2001" : r"Music\2001.mp3",
     "5" : r"Music\5.mp3",
     "9" : r"Music/9.mp3",
+    "1" : r"Music/1.mp3",
+    "182" : r"Music/182.mp3",
+    "23" : r"Music/23.mp3",
+    "41" : r"Music/41.mp3",
     }
 
 def NumberKey (number):
