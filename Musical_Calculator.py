@@ -5,10 +5,16 @@ result_number = 0
 num_str = ""
 
 sound_library = { #This dictionary holds the numbers and what songs they play
-    "8675309" : r"C:\Users\Goldkat\source\repos\Musical Calculator\Music\8675_309.mp3",
-    "925" : r"C:\Users\Goldkat\source\repos\Musical Calculator\Music\925.mp3",
-    "3000" : r"C:\Users\Goldkat\source\repos\Musical Calculator\Music\3000.mp3",
-    "8" : r"C:\Users\Goldkat\source\repos\Musical Calculator\Music\sk8rboi.mp3",
+    "8675309" : r"Musical Calculator\Music\8675_309.mp3",
+    "925" : r"Musical Calculator\Music\925.mp3",
+    "3000" : r"Musical Calculator\Music\3000.mp3",
+    "8" : r"Musical Calculator\Music\sk8rboi.mp3",
+    "69" : r"Musical Calculator\Music\69.mp3",
+    "420" : r"Musical Calculator\Music\420.mp3",
+    "1158" : r"Musical Calculator\Music\1158.mp3",
+    "2001" : r"Musical Calculator\Music\2001.mp3",
+    "5" : r"Musical Calculator\Music\5.mp3",
+    "9" : r"Musical Calculator/Music/9.mp3",
     }
 
 def NumberKey (number):
@@ -17,7 +23,7 @@ def NumberKey (number):
     output_display.set(num_str)
 
 def DecimalKey(): 
-    global has_decimal, num_str
+    global num_str
     num_str = num_str + "."
     output_display.set(num_str)
 def EqualsKey():
@@ -44,7 +50,7 @@ def ClearKey():
 def GetSound():
     global num_str
     try:
-        eval("playsound(" + 'r"' + sound_library[num_str] + '"' + ")")
+        eval("playsound(" + 'r"C:/Users/Goldkat/source/repos/' + sound_library[num_str] + '"' + ")") # Put your own path here
         print("playsound(r" + sound_library[num_str] + ")")
     except Exception:
         var = 1
