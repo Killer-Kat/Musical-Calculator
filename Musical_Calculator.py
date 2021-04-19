@@ -1,19 +1,23 @@
 from tkinter import *
-
+from playsound import playsound
 
 result_number = 0
 num_str = ""
-has_decimal = False
+
+sound_library = { #This dictionary holds the numbers and what songs they play
+    "8675309" : r"C:\Users\Goldkat\source\repos\Musical Calculator\Music\8675_309.mp3",
+    "925" : r"C:\Users\Goldkat\source\repos\Musical Calculator\Music\925.mp3",
+    "3000" : r"C:\Users\Goldkat\source\repos\Musical Calculator\Music\3000.mp3",
+    "8" : r"C:\Users\Goldkat\source\repos\Musical Calculator\Music\sk8rboi.mp3",
+    }
 
 def NumberKey (number):
     global num_str
     num_str = num_str + str(number)
     output_display.set(num_str)
 
-def DecimalKey():
+def DecimalKey(): 
     global has_decimal, num_str
-    #if has_decimal == False:
-     #   has_decimal = True
     num_str = num_str + "."
     output_display.set(num_str)
 def EqualsKey():
@@ -21,12 +25,14 @@ def EqualsKey():
     try:
         num_str = str(eval(num_str))
         output_display.set(num_str)
+        
     except ZeroDivisionError:
         ClearKey()
         output_display.set("You cant divide by 0")
     except Exception:
         ClearKey()
         output_display.set("ERROR")
+    GetSound()
 def FunctionKey(type):
     global num_str
     num_str = num_str + str(type)
@@ -35,6 +41,13 @@ def ClearKey():
     global num_str
     num_str = ""
     output_display.set(num_str)
+def GetSound():
+    global num_str
+    try:
+        eval("playsound(" + 'r"' + sound_library[num_str] + '"' + ")")
+        print("playsound(r" + sound_library[num_str] + ")")
+    except Exception:
+        var = 1
 
 #GUI 
 root = Tk()
