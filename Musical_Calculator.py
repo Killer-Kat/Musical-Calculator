@@ -53,23 +53,32 @@ def ClearKey():
     global num_str
     num_str = ""
     output_display.set(num_str)
+
 def GetSound():
     global num_str
-    print("playsound(" + 'r"' + cwd + sound_library[num_str] + '"' + ")")
+    print("playsound(" + 'r"' + cwd + sound_library[num_str] + '"' + ")") #For debug, can remove later
     try:
-        eval("playsound(" + 'r"' + cwd + sound_library[num_str] + '"' + ")") # Put your own path here
+        eval("playsound(" + 'r"' + cwd + sound_library[num_str] + '"' + ")") #If for some reason the app cant find the song mp3's you can give it the path by altering this.
         
     except Exception:
         var = 1
 
+def ChangeTheme():
+    print("SDAFSDAFSDAFSDF")
+
 #GUI 
 root = Tk()
 root.title("WIP MUSIC CALC")
-root.geometry("100x200")
+root.geometry("150x200")
+
+current_theme = StringVar()
+current_theme.set("Light") #Default theme
+theme_menu = OptionMenu(root, current_theme, "Light", "Dark")
+theme_menu.grid(row=1, column=4,columnspan=2)
 
 output_display = StringVar()
 output_display_label = Label(root, textvariable=output_display)
-output_display_label.grid(row=0, column=0, columnspan=50)
+output_display_label.grid(row=0, column=0, columnspan=50, sticky = W)
 
 
 seven_key = Button(root, text="7", command= lambda: NumberKey(7))
@@ -110,6 +119,6 @@ addition_key.grid(row=4, column=3)
 clear_key = Button(root, text="Clear", command=ClearKey)
 clear_key.grid(row=5, column=0,columnspan=3)
 
-output_display.set("TEST")
+output_display.set("TEST") #debug
 
 root.mainloop()
